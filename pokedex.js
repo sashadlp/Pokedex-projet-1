@@ -1,9 +1,7 @@
-fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
 
-  const getData = async () => {
+ let allPokemon=[]
+
+ const getData = async () => {
   const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
     .catch(error => {
       console.error("Error:", error)
@@ -21,7 +19,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
 getData()
 
 
-export class pokemon {
+ class pokemon {
    // variables de class
     id
     nom
@@ -38,27 +36,32 @@ export class pokemon {
     this.sprites = sprites
 
   }
+  
 }
+const unPokemon = new pokemon(
+  details.id,
+  details.name,
+  details.types,
+  details.stats,
+  details.sprites.front_default
+);
+
 
 document.getElementById('searchBtn').addEventListener('click', () => {
-        const name = document.getElementById('searchChampion').value.trim();
-        if (!name) return;
- 
-        fetch('APISite.php?champions=1')
-            .then(r => r.json())
-            .then(data => {
-                const champions = Object.entries(data.data);
-                const found = champions.find(([key, champ]) =>
-                    champ.name.toLowerCase() === name.toLowerCase()
-                );
- 
-                if (!found) {
-                    document.getElementById('championDetail').innerHTML = <p>Champion "${name}" introuvable.</p>;
-                    return;
-                }
- 
-                const [key] = found;
-                showDetail(key);
-            })
-            .catch(err => console.error('Erreur :', err));
-    });
+  // 1. On récupère le texte tapé par l'utilisateur
+  const searchValue = document.getElementById('search-input').value.trim().toLowerCase();
+
+  // 2. On filtre notre tableau de Pokémon
+  const resultats = allPokemon.filter(p => p.nom.toLowerCase().includes(searchValue));
+
+  const grid = document.getElementById('pokemon-grid');
+
+  // 3. Gestion du cas vide (si aucun résultat)
+  if (resultats.length === 0) {
+    grid.innerHTML = `<p>Aucun Pokémon ne correspond à "${searchValue}".</p>`;
+    return;
+  }
+
+  // 4. Si on a des résultats, on relance l'affichage avec la liste filtrée
+  afficherPokemon(resultats);
+});
