@@ -44,3 +44,10 @@
 .filtre{
     font-size: 30px !important;
 }
+.grid {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 40px 40px;
+    justify-content: center;
+}
