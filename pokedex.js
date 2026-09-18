@@ -86,7 +86,7 @@ document.getElementById('searchBtn').addEventListener('click', () => {
 });
 function afficherPokemon(liste) {
   const grid = document.getElementById('pokemon-grid');
-  
+
   grid.innerHTML = "";
   liste.forEach(p => {
     const estFavori = pokemonfavoris.includes(p.id);
@@ -150,6 +150,7 @@ document.getElementById('pokemon-grid').addEventListener('click', (event) => {
             pokemonfavoris.push(id);
             event.target.textContent = "❤️";
         }   
+        majfavcount();
         localStorage.setItem('favoris', JSON.stringify(pokemonfavoris));
         
     }
