@@ -1,5 +1,6 @@
 
  let allPokemon=[]
+ let pokemonfavoris = JSON.parse(localStorage.getItem('favoris')) || [];
   class pokemon {
    // variables de class
     id
@@ -54,7 +55,14 @@ console.log(allPokemon);
 getData()
 
 
-
+function majfavcount() {
+  let nbfav = document.getElementById('fav-count')
+  if (nbfav) {
+    nbfav.textContent=pokemonfavoris.length
+  }
+  
+}
+majfavcount();
 
 
 
@@ -78,8 +86,11 @@ document.getElementById('searchBtn').addEventListener('click', () => {
 });
 function afficherPokemon(liste) {
   const grid = document.getElementById('pokemon-grid');
+  
   grid.innerHTML = "";
   liste.forEach(p => {
+    const estFavori = pokemonfavoris.includes(p.id);
+  const texteBouton = estFavori ? " ❤️" : " 🤍";
     const div = document.createElement("div");
      div.classList.add("pokemon-card");
 
@@ -87,7 +98,7 @@ function afficherPokemon(liste) {
         <span class="badge-id">#${p.id}</span>
         <img src="${p.sprites}" alt="${p.nom}">
         <h3>${p.nom}</h3>
-        <button class="btn-favori" data-id="${p.id}">ajouter la cartes aux Favori</button>
+        <button class="btn-favori" data-id="${p.id}">${texteBouton}</button>
             `;
             grid.appendChild(div);
   });
@@ -125,3 +136,21 @@ function filtrerPokemon() {
 searchInput.addEventListener('input', filtrerPokemon);
 
 typeFilter.addEventListener('change', filtrerPokemon);
+
+document.getElementById('pokemon-grid').addEventListener('click', (event) => {
+    if (event.target.classList.contains('btn-favori')) {
+        
+        const id = parseInt(event.target.dataset.id);
+        
+        console.log("ID du Pokémon cliqué :", id);
+        if (pokemonfavoris.includes(id)) {
+            pokemonfavoris = pokemonfavoris.filter(favId => favId !== id);
+            event.target.textContent = "🤍";
+        } else {
+            pokemonfavoris.push(id);
+            event.target.textContent = "❤️";
+        }   
+        localStorage.setItem('favoris', JSON.stringify(pokemonfavoris));
+        
+    }
+});
