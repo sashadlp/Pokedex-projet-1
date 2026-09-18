@@ -7,8 +7,8 @@
      <link rel="icon" href="Pokebola.ico" type="image/x-icon">
      <link rel="stylesheet" href="pokedex.css">
 </head>
-<body>
-    <body id="body">
+<body id="body">
+    
 
     <div class="section section1">
 
@@ -22,8 +22,10 @@
         <h1>Pokedex d'ex</h1>
 <img src="font.jpg" class="background-img">
         
-<div  class="recherche" id="searchBtn">
-            🔍
+<div  class="recherche">
+    <button class="bouton-recherche" id="searchBtn">🔍</button>
+    <input type="text" id="search-input">
+            
         </div>
         <div>
             <div id="pokemon-grid"></div>
@@ -32,6 +34,10 @@
         </div>
 
     </div>
+    <span id="fav-count">0</span>
+
+    <select id="type-filter"></select>
+    <div id="pokemon-grid"></div>
 </body>
 <script src="pokedex.js"></script>
 </html>

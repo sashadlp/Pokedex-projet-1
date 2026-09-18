@@ -1,27 +1,6 @@
-fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
 
-  const getData = async () => {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
-    .catch(error => {
-      console.error("Error:", error)
-    });
- 
-  if(response.status < 300){
-    const data = await response.json();
-    console.log(data)
-  }
-  else{
-    // Status code >= 300
-  }
-}
- 
-getData()
-
-
-export class pokemon {
+ let allPokemon=[]
+  class pokemon {
    // variables de class
     id
     nom
@@ -38,16 +17,62 @@ export class pokemon {
     this.sprites = sprites
 
   }
-}
-
-document.getElementById('searchBtn').addEventListener('click', () => {})
-      
-
-
-function renderPokemon(list) {
-  const grid = document.getElementById('pokemon-grid');
   
-
-  grid.innerHTML = '';
-
 }
+
+ const getData = async () => {
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
+    .catch(error => {
+      console.error("Error:", error)
+    });
+ 
+  if(response.status < 300){
+    const data = await response.json();
+    const promises = data.results.map(async (p) => {
+      const res = await fetch(p.url);
+    return await res.json();})
+    const tousLesDetails = await Promise.all(promises);
+    allPokemon = tousLesDetails.map((details) => {
+  return new pokemon(
+    details.id,
+    details.name,
+    details.types,
+    details.stats,
+    details.sprites.front_default
+  );
+});
+
+console.log(allPokemon);
+    
+    console.log(allPokemon)
+  }
+  else{
+    // Status code >= 300
+  }
+}
+ 
+getData()
+
+
+
+
+
+
+document.getElementById('searchBtn').addEventListener('click', () => {
+
+  const searchValue = document.getElementById('search-input').value.trim().toLowerCase();
+
+ 
+  const resultats = allPokemon.filter(p => p.nom.toLowerCase().includes(searchValue));
+
+  const grid = document.getElementById('pokemon-grid');
+
+
+  if (resultats.length === 0) {
+    grid.innerHTML = `<p>Aucun Pokémon ne correspond à "${searchValue}".</p>`;
+    return;
+  }
+
+  
+  afficherPokemon(resultats);
+});
