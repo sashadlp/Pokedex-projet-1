@@ -23,7 +23,7 @@ body {
 }
 
 .section1 {
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(240, 206, 68, 0.344);
     padding: 10px;
     align-items: center;
     
@@ -75,23 +75,23 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 320px;            /* Donne une largeur fixe à chaque carte */
+    width: 320px;           git
     padding: 15px;
-    background: rgba(255, 255, 255, 0.85); /* Un léger fond pour bien détacher la carte */
+    background: rgba(255, 255, 255, 0.85); 
     letter-spacing: 5px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 #fav-count {
-    display: inline-block; /* Permet aux marges de bien fonctionner sur un span */
-    margin-left: 25px;     /* Décale le texte vers la droite */
-    margin-top: 15px;      /* Décale le texte vers le bas par rapport au bandeau */
-    margin-bottom: 10px;   /* Espace sous le texte avant la grille */
+    display: inline-block; 
+    margin-left: 25px;     
+    margin-top: 15px;       
+    margin-bottom: 10px;   
 }
 .pokemon-card img {
     width: 200px;       
     height: 200 px;
     object-fit: contain;
-    image-rendering: pixelated; /* Garde les pixels bien nets sans flou */
+    image-rendering: pixelated;
 }
