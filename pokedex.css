@@ -44,10 +44,13 @@
 .filtre{
     font-size: 30px !important;
 }
-.grid {
+#pokemon-grid {
     display: flex !important;
     flex-wrap: wrap;
     gap: 15px;
     padding: 20px 40px 40px;
     justify-content: center;
+}
+.btn-favori{
+    font-size: 20px  !important;
 }
