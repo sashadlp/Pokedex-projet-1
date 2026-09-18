@@ -60,10 +60,10 @@ getData()
 
 document.getElementById('searchBtn').addEventListener('click', () => {
 
-  const searchValue = document.getElementById('search-input').value.trim().toLowerCase();
+  const searchValue = document.getElementById('search-input').value.trim();
 
  
-  const resultats = allPokemon.filter(p => p.nom.toLowerCase().includes(searchValue));
+  const resultats = allPokemon.filter(p => p.nom().includes(searchValue));
 
   const grid = document.getElementById('pokemon-grid');
 
@@ -92,3 +92,36 @@ function afficherPokemon(liste) {
             grid.appendChild(div);
   });
 }
+
+
+const searchInput = document.getElementById('search-input');
+const typeFilter = document.getElementById('type-filter');
+
+
+function filtrerPokemon() {
+    const searchValue = searchInput.value.trim();
+    const selectedType = typeFilter.value;
+
+    const resultats = allPokemon.filter(p => {
+        
+        const correspondNom = p.nom.includes(searchValue);
+        
+      
+        const correspondType = selectedType === 'all' || p.type.some(t => t.type.name === selectedType);
+
+        return correspondNom && correspondType;
+    });
+
+    const grid = document.getElementById('pokemon-grid');
+
+    if (resultats.length === 0) {
+        grid.innerHTML = `<p class="no-result">Désolé mais nous n'avons trouvé aucun pokémon.</p>`;
+        return;
+    }
+
+    afficherPokemon(resultats);
+}
+
+searchInput.addEventListener('input', filtrerPokemon);
+
+typeFilter.addEventListener('change', filtrerPokemon);
