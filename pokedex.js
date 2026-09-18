@@ -76,19 +76,9 @@ document.getElementById('searchBtn').addEventListener('click', () => {
   
   afficherPokemon(resultats);
 });
-function afficherPokemon(liste) {
-  const grid = document.getElementById('pokemon-grid');
-  grid.innerHTML = "";
-  liste.forEach(p => {
-    const div = document.createElement("div");
-     div.classList.add("pokemon-card");
 
-     div.innerHTML = `
-        <span class="badge-id">#${p.id}</span>
-        <img src="${p.sprites}" alt="${p.nom}">
-        <h3>${p.nom}</h3>
-        <button class="btn-favori" data-id="${p.id}">⭐ Favori</button>
-            `;
-            grid.appendChild(div);
-  });
+function renderPokemon(liste){
+const grid =document.getElementById('pokemon-grid')
+grid.innerHTML = '';
+
 }
