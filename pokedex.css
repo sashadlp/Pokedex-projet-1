@@ -2,13 +2,24 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: 50px;
+    font-size: 40px;
+    
+}
+@font-face {
+  font-family: 'Pokemon';
+  src: url('Pokemon Solid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 'Pokemon', sans-serif;
 }
 .section {
     display: flex;
     gap: 20px;
    
     flex-wrap: wrap; 
+
 }
 
 .section1 {
@@ -28,7 +39,7 @@
     object-fit: cover;
     object-position: center;
     
-    /* Ton léger flou */
+   
     filter: blur(3px);
     
     transform: scale(1.05);
@@ -50,10 +61,37 @@
     gap: 15px;
     padding: 20px 40px 40px;
     justify-content: center;
+    border-right: 10cm;
 }
 .btn-favori{
-    font-size: 20px  !important;
+    font-size: 30px  !important;
 }
 #type-filter{
     font-size: 20px !important;
+    font-family: 'Pokemon', sans-serif;
+}
+.pokemon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 320px;            /* Donne une largeur fixe à chaque carte */
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.85); /* Un léger fond pour bien détacher la carte */
+    letter-spacing: 5px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#fav-count {
+    display: inline-block; /* Permet aux marges de bien fonctionner sur un span */
+    margin-left: 25px;     /* Décale le texte vers la droite */
+    margin-top: 15px;      /* Décale le texte vers le bas par rapport au bandeau */
+    margin-bottom: 10px;   /* Espace sous le texte avant la grille */
+}
+.pokemon-card img {
+    width: 200px;       
+    height: 200 px;
+    object-fit: contain;
+    image-rendering: pixelated; /* Garde les pixels bien nets sans flou */
 }

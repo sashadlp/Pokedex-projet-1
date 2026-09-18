@@ -22,7 +22,7 @@
 }
 
  const getData = async () => {
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=55")
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=112")
     .catch(error => {
       console.error("Error:", error)
     });
@@ -58,7 +58,7 @@ getData()
 function majfavcount() {
   let nbfav = document.getElementById('fav-count')
   if (nbfav) {
-    nbfav.textContent=pokemonfavoris.length
+    nbfav.textContent=`Vous avez  ${pokemonfavoris.length} pokemon favoris`
   }
   
 }
@@ -66,7 +66,7 @@ majfavcount();
 
 
 
-document.getElementById('searchBtn').addEventListener('click', () => {
+document.getElementById('search-input').addEventListener('click', () => {
 
   const searchValue = document.getElementById('search-input').value.trim();
 
