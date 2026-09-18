@@ -40,25 +40,14 @@ export class pokemon {
   }
 }
 
-document.getElementById('searchBtn').addEventListener('click', () => {
-        const name = document.getElementById('searchChampion').value.trim();
-        if (!name) return;
- 
-        fetch('APISite.php?champions=1')
-            .then(r => r.json())
-            .then(data => {
-                const champions = Object.entries(data.data);
-                const found = champions.find(([key, champ]) =>
-                    champ.name.toLowerCase() === name.toLowerCase()
-                );
- 
-                if (!found) {
-                    document.getElementById('championDetail').innerHTML = `<p>Champion "${name}" introuvable.</p>`;
-                    return;
-                }
- 
-                const [key] = found;
-                showDetail(key);
-            })
-            .catch(err => console.error('Erreur :', err));
-    });
+document.getElementById('searchBtn').addEventListener('click', () => {})
+      
+
+
+function renderPokemon(list) {
+  const grid = document.getElementById('pokemon-grid');
+  
+
+  grid.innerHTML = '';
+
+}
