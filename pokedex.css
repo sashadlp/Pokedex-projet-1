@@ -1,15 +1,15 @@
+@font-face {
+    font-family: 'Pokemon';
+    src: url('Pokemon Solid.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-size: 40px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: 40px;
-    
-}
-@font-face {
-  font-family: 'Pokemon';
-  src: url('Pokemon Solid.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 body {
   font-family: 'Pokemon', sans-serif;
@@ -20,6 +20,14 @@ body {
    
     flex-wrap: wrap; 
 
+}
+
+
+
+h1 {
+  font-size: 50px; 
+  text-align: center;
+  letter-spacing: 3px;
 }
 
 .section1 {
@@ -44,12 +52,31 @@ body {
     
     transform: scale(1.05);
 }
-.recherche{
-    font-size: 20px !important;
-    
+.recherche {
+  display: flex;
+  align-items: center;
+  gap: 12px;             
+  flex-wrap: wrap;        
 }
-.bouton-rechercher{
-    background-color: red;
+
+
+#search-input {
+  font-size: 20px;
+  padding: 8px 14px;
+  width: 260px;           
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+#type-filter {
+  font-size: 20px !important;
+  font-family: 'Pokemon', sans-serif;
+  height: 44px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .filtre{
@@ -61,7 +88,7 @@ body {
     gap: 15px;
     padding: 20px 40px 40px;
     justify-content: center;
-    border-right: 10cm;
+   
 }
 .btn-favori{
     font-size: 30px  !important;
@@ -74,8 +101,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 320px;           git
+    justify-content: center; 
+    width: 100%;
+    max-width: 300px;              
     padding: 15px;
     background: rgba(255, 255, 255, 0.85); 
     letter-spacing: 5px;
@@ -91,7 +119,70 @@ body {
 }
 .pokemon-card img {
     width: 200px;       
-    height: 200 px;
+    height: 200px;
     object-fit: contain;
     image-rendering: pixelated;
 }
+
+
+
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 550px;
+  width: 90%;
+  
+    
+  margin: auto;
+  
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+
+.modal-content {
+    font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  text-align: left;
+  gap: 12px;
+}
+
+.modal-sprite {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.stats-container{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 12px;
+  width: 100%;
+}
+.modal-title {
+  font-size: 40px; 
+  margin: 0;
+  width: 100%;
+}
+
+.modal-title strong {
+  font-size: 40px; 
+  color: goldenrod;
+}
+
+.sprite-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
