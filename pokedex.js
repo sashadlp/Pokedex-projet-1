@@ -75,11 +75,13 @@ function remplirModal(p) {
     )
     .join("");
 
-  dialogue.innerHTML = `
+dialogue.innerHTML = `
     <div class="modal-content">
       <button id="fermer">❌ Fermer</button>
-      <h2>${p.nom} <strong>#${p.id}</strong></h2>
-      <img src="${p.sprites}" alt="${p.nom}" class="modal-sprite">
+      <h2 class="modal-title">${p.nom} <strong>#${p.id}</strong></h2>
+      <div class="sprite-container">
+        <img src="${p.sprites}" alt="${p.nom}" class="modal-sprite">
+      </div>
       <p><strong>Type(s) :</strong> ${typesText}</p>
       
       <div class="stats-container">
@@ -87,7 +89,7 @@ function remplirModal(p) {
         ${statsHTML}
       </div>
     </div>
-  `;
+`;
 
   document.getElementById("fermer").addEventListener("click", () => {
     dialogue.close();
