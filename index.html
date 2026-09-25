@@ -8,7 +8,9 @@
      <link rel="stylesheet" href="pokedex.css">
 </head>
 <body id="body">
-    
+     
+  
+
 
     <div class="section section1">
 
@@ -17,7 +19,7 @@
                 <img src="Pokebola.png" alt="Logo" height="150" width="150">
             </div>
         </a>
-        
+       
 
         <h1>Pokedex</h1>
 <img src="font.jpg" class="background-img">
@@ -41,7 +43,8 @@
         <option value="rock" id="type-filter">Roche</option>
         <option value="ghost" id="type-filter">spectre</option>
     </select>
-            
+             <audio controls>
+  <source src="Pokémon Battle Music - Anime Version.mp3" type="audio/mpeg" />
         </div>
         <div>
             
@@ -52,14 +55,14 @@
     </div>
    
     <span id="fav-count" > Vous avez 0 pokemon favoris</span>
+    <p class="audio">si vous souhaiter vous ambiancer cliquer sur play</p>
+  
 
     
     <div id="pokemon-grid"></div>
     <dialog id="dialogue">
 </dialog>
-<audio controls autoplay loop>
-  <source src="Pokémon Battle Music - Anime Version.mp3" type="audio/mpeg" />
-  <p> 
+
 </body>
 <script src="pokedex.js"></script>
 </html>

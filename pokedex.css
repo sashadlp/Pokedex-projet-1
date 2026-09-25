@@ -22,7 +22,9 @@ body {
 
 }
 
-
+.audio{
+  margin-left: 30px;
+}
 
 h1 {
   font-size: 50px; 
